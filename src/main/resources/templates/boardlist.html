@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 리스트 페이지</title>
+</head>
+<style>
+  div {
+    width: 500px;
+    margin: 0 auto;
+  }
+
+  table {
+    width: 100%;
+    border: 1px solid #444444; /*테이블 외부테두리*/
+
+  }
+  th, td {
+    border: 1px solid #444444; /*테이블 내부셀 테두리*/
+    text-align: center;
+  }
+</style>
+<body>
+  <div>
+      <a href="/board/write" style="float: right">글쓰기</a>
+  </div>
+  <div>
+      <table>
+          <thead>
+            <tr>
+                <th>글번호</th>
+                <th>제목</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="board : ${list}">
+                <td th:text="${board.id}">1</td>
+                <td>
+                    <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}">제목입니다</a>
+                </td>
+            </tr>
+          </tbody>
+      </table>
+  </div>
+
+</body>
+</html>
